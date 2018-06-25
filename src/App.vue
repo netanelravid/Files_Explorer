@@ -13,6 +13,7 @@
             :onChange="abc"
             :updateSelected="updateFileSelectedValue"/>
           <text-output/>
+          <!-- <file-upload> -->
         </v-layout>
       </v-container>
     </v-app>
@@ -24,12 +25,14 @@ import { mapActions } from "vuex"
 
 import SelectElement from "./components/SelectElement.vue"
 import TextOutput from "./components/TextOutput.vue"
+// import FileUpload from "./components/FileUpload.vue"
 
 export default {
   name: "app",
   components: {
     SelectElement,
     TextOutput,
+    // FileUpload,
   },
   data() {
     return {};
