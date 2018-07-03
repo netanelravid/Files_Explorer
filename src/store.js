@@ -59,6 +59,9 @@ export default new Vuex.Store({
     ["UPDATE_FILE_SELECTED"] (state, selected) {
       state.files.selected = selected;
     },
+    ["UPDATE_CONTENT"] (state, content) {
+      state.content = content;
+    },
   },
   actions: {
     async updateFolderItems ({commit}) {
@@ -95,6 +98,9 @@ export default new Vuex.Store({
     },
     async updateFileSelected ({commit}, selected) {
       commit("UPDATE_FILE_SELECTED", selected);
+    },
+    async updateContent ({commit}, content) {
+      commit("UPDATE_CONTENT", content);
     },
   },
   getters: {
