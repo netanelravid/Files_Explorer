@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <div>
       Search: <input type="text" v-model="query" placeholder="Search" />
     </div>
@@ -11,7 +11,6 @@
 <script>
 
 export default {
-  name: 'app',
   data() {
     return {
       query: "",

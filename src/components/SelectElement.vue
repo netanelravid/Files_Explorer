@@ -30,7 +30,6 @@
 import { OrbitSpinner } from "epic-spinners";
 
 export default {
-  name: "app",
   components: {
     OrbitSpinner,
   },
