@@ -1,5 +1,5 @@
 <template>
-  <v-flex md2 ma-2>
+  <v-flex>
     <v-layout>
       <v-flex>
         <v-select

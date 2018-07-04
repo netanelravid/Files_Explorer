@@ -3,16 +3,25 @@
     <v-app id="inspire">
       <h1 class="headline">Files Explorer</h1>
       <v-container fluid>
-        <v-layout>
-          <select-element
-            name="folder"
-            :onChange="showFilesList"
-            :updateSelected="updateFolderSelectedValue"/>
-          <select-element
-            name="files"
-            :onChange="abc"
-            :updateSelected="updateFileSelectedValue"/>
-          <text-output/>
+        <v-layout justify-space-around="true">
+          <v-flex md4 ma-4>
+            <v-layout>
+              <select-element
+                name="folder"
+                :onChange="showFilesList"
+                :updateSelected="updateFolderSelectedValue"/>
+              <select-element
+                name="files"
+                :onChange="abc"
+                :updateSelected="updateFileSelectedValue"/>
+              <file-upload/>
+            </v-layout>
+          </v-flex>
+          <v-flex md2 ma-2>
+          </v-flex>
+          <v-flex md6 ma-6>
+            <text-output/>
+          </v-flex>
         </v-layout>
       </v-container>
     </v-app>
@@ -24,12 +33,14 @@ import { mapActions } from "vuex"
 
 import SelectElement from "./components/SelectElement.vue"
 import TextOutput from "./components/TextOutput.vue"
+import FileUpload from "./components/FileUpload.vue"
 
 export default {
   name: "app",
   components: {
     SelectElement,
     TextOutput,
+    FileUpload,
   },
   data() {
     return {};
