@@ -1,11 +1,9 @@
 <template>
-  <v-flex>
-    <vue-dropzone
-      id="dropzone"
-      @vdropzone-complete="syncFileContent"
-      :options="dropOptions">
-    </vue-dropzone>
-  </v-flex>
+  <vue-dropzone
+    id="dropzone"
+    @vdropzone-complete="syncFileContent"
+    :options="dropOptions">
+  </vue-dropzone>
 </template>
 
 <script>
@@ -14,7 +12,6 @@ import vueDropzone from "vue2-dropzone";
 import 'vue2-dropzone/dist/vue2Dropzone.css';
 
 export default {
-  name: "app",
   components: {
     vueDropzone,
   },
