@@ -33,7 +33,6 @@ export default {
     }),
     async syncFileContent(file) {
       const fileContent = JSON.parse(file.xhr.responseText).files.file.split('\n');
-      console.log(fileContent);
       await this.updateContent(fileContent);
     },
   },

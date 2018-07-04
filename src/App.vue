@@ -5,17 +5,7 @@
       <v-container fluid>
         <v-layout justify-space-around="true">
           <v-flex md4 ma-4>
-            <v-layout>
-              <select-element
-                name="folder"
-                :onChange="showFilesList"
-                :updateSelected="updateFolderSelectedValue"/>
-              <select-element
-                name="files"
-                :onChange="abc"
-                :updateSelected="updateFileSelectedValue"/>
-              <file-upload/>
-            </v-layout>
+            <file-upload/>
           </v-flex>
           <v-flex md2 ma-2>
           </v-flex>
@@ -31,14 +21,12 @@
 <script>
 import { mapActions } from "vuex"
 
-import SelectElement from "./components/SelectElement.vue"
 import TextOutput from "./components/TextOutput.vue"
 import FileUpload from "./components/FileUpload.vue"
 
 export default {
   name: "app",
   components: {
-    SelectElement,
     TextOutput,
     FileUpload,
   },
@@ -46,38 +34,8 @@ export default {
     return {};
   },
   methods: {
-    ...mapActions({
-      updateFolderItems: "updateFolderItems",
-      changeFolderIsDisabled: "changeFolderIsDisabled",
-      updateFolderSelected: "updateFolderSelected",
-      updateFilesItems: "updateFilesItems",
-      changeFilesIsDisabled: "changeFilesIsDisabled",
-      updateFileSelected: "updateFileSelected",
-    }),
-    async showFolderList() {
-      let succeded = await this.updateFolderItems();
-      if (succeded){
-        await this.changeFolderIsDisabled(false);
-      }
-    },
-    async abc() {},
-    async updateFolderSelectedValue(value) {
-      await this.updateFolderSelected(value);
-    },
-    async showFilesList() {
-      await this.changeFilesIsDisabled(true);
-      let succeded = await this.updateFilesItems();
-      if (succeded){
-        await this.changeFilesIsDisabled(false);
-      }
-    },
-    async updateFileSelectedValue(value) {
-      await this.updateFileSelected(value);
-    },
   },
-  async mounted() {
-    await this.showFolderList();
-  },
+  async mounted() {},
 };
 </script>
 
