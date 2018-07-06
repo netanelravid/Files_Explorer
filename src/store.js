@@ -33,6 +33,7 @@ export default new Vuex.Store({
       "Quisque urna magna, porta eget erat ac, pharetra vehicula erat.",
       "Suspendisse sed nisi ex.",
     ],
+    query: "",
   },
   mutations: {
     ["INIT_FOLDERS_ITEMS"] (state) {
@@ -61,6 +62,9 @@ export default new Vuex.Store({
     },
     ["UPDATE_CONTENT"] (state, content) {
       state.content = content;
+    },
+    ["UPDATE_QUERY"] (state, query) {
+      state.query = query;
     },
   },
   actions: {
@@ -102,10 +106,14 @@ export default new Vuex.Store({
     async updateContent ({commit}, content) {
       commit("UPDATE_CONTENT", content);
     },
+    async updateQuery ({commit}, query) {
+      commit("UPDATE_QUERY", query);
+    },
   },
   getters: {
     folder: (state) => state.folder,
     files: (state) => state.files,
     content: (state) => state.content,
+    query: (state) => state.query,
   },
 });

@@ -1,24 +1,16 @@
 <template>
-  <div>
-    <div>
-      Search: <input type="text" v-model="query" placeholder="Search" />
-    </div>
-    <br />
-    <div v-html="highlighedContent"></div>
-  </div>
+  <div v-html="highlighedContent"></div>
 </template>
 
 <script>
 
 export default {
   data() {
-    return {
-      query: "",
-    }
+    return {}
   },
   methods: {
     getHighlightedContent: (content, query) => {
-      let tempHighlightedContent = [];
+      let highlightedContentArray = [];
 
       content.forEach(line => {
         const highlightedLine = line.replace(new RegExp(query, "gi"), match => {
@@ -26,16 +18,21 @@ export default {
         });
         const newLine = highlightedLine.replace(/<\/span><span/g, '</span> <span');
 
-        tempHighlightedContent.push(newLine);
+        highlightedContentArray.push(newLine);
       });
 
-      return tempHighlightedContent;
+      return highlightedContentArray;
     },
   },
   computed: {
     content: {
       get() {
         return this.$store.getters.content;
+      },
+    },
+    query: {
+      get() {
+        return this.$store.getters.query;
       },
     },
     highlighedContent() {
