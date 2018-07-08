@@ -30,36 +30,38 @@ export default {
         return this.$store.getters.content;
       },
     },
-    query: {
-      get() {
-        return this.$store.getters.query;
-      },
-    },
     highlighedContent() {
-      if(!this.query) {
+      if(!this.$store.getters.query) {
         return this.content.join('<br>')
       }
 
       let HighlightedContent = [];
       try {
-        HighlightedContent = this.getHighlightedContent(this.content, this.query);
+        HighlightedContent = this.getHighlightedContent(this.content, this.$store.getters.query);
       }
       catch(error) {
+        console.log(error);
         HighlightedContent = this.content;
       }
 
       return HighlightedContent.join('<br>');
     },
   },
+  mounted() {
+    this.$el.style.setProperty('--color', this.$store.getters.highlightColor)
+  },
 }
 </script>
 
 <style>
+:root {
+  --color: #ffffff;
+}
 
 body {
   background: #F0F0F0;
 }
 .highlightText {
-    background: #a0E5F0;
+    background: var(--color);
 }
 </style>

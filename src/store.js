@@ -34,6 +34,7 @@ export default new Vuex.Store({
       "Suspendisse sed nisi ex.",
     ],
     query: "",
+    highlightColor: "",
   },
   mutations: {
     ["INIT_FOLDERS_ITEMS"] (state) {
@@ -65,6 +66,9 @@ export default new Vuex.Store({
     },
     ["UPDATE_QUERY"] (state, query) {
       state.query = query;
+    },
+    ["UPDATE_HIGHLIGHT_COLOR"] (state, highlightColor) {
+      state.highlightColor = highlightColor;
     },
   },
   actions: {
@@ -109,11 +113,15 @@ export default new Vuex.Store({
     async updateQuery ({commit}, query) {
       commit("UPDATE_QUERY", query);
     },
+    async updateHighlightColor ({commit}, highlightColor) {
+      commit("UPDATE_HIGHLIGHT_COLOR", highlightColor);
+    },
   },
   getters: {
     folder: (state) => state.folder,
     files: (state) => state.files,
     content: (state) => state.content,
     query: (state) => state.query,
+    highlightColor: (state) => state.highlightColor,
   },
 });

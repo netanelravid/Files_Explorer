@@ -8,7 +8,10 @@
             <file-upload/>
           </v-flex>
           <v-flex md2 ma-2>
-            <regex-highlighter :updateQuery="updateQuery"/>
+            <regex-highlighter
+              fieldLabel="Some_string"
+              :updateQuery="updateQuery"
+              highlightColor="#a0e5f0"/>
           </v-flex>
           <v-flex md6 ma-6>
             <text-output/>
