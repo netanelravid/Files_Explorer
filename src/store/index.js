@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import { utils } from "./utils";
+import { utils } from "../utils.js";
 
 Vue.use(Vuex);
 
