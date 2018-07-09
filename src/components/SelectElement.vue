@@ -34,10 +34,10 @@ export default {
     OrbitSpinner,
   },
   props: [
-      "name",
-      "onChange",
-      "updateSelected",
-    ],
+    "name",
+    "onChange",
+    "updateSelected",
+  ],
   data() {
     return {}
   },

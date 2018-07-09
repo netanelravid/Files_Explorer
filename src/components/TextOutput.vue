@@ -1,24 +1,16 @@
 <template>
-  <div>
-    <div>
-      Search: <input type="text" v-model="query" placeholder="Search" />
-    </div>
-    <br />
-    <div v-html="highlighedContent"></div>
-  </div>
+  <div v-html="highlighedContent"></div>
 </template>
 
 <script>
 
 export default {
   data() {
-    return {
-      query: "",
-    }
+    return {}
   },
   methods: {
     getHighlightedContent: (content, query) => {
-      let tempHighlightedContent = [];
+      let highlightedContentArray = [];
 
       content.forEach(line => {
         const highlightedLine = line.replace(new RegExp(query, "gi"), match => {
@@ -26,10 +18,10 @@ export default {
         });
         const newLine = highlightedLine.replace(/<\/span><span/g, '</span> <span');
 
-        tempHighlightedContent.push(newLine);
+        highlightedContentArray.push(newLine);
       });
 
-      return tempHighlightedContent;
+      return highlightedContentArray;
     },
   },
   computed: {
@@ -39,30 +31,37 @@ export default {
       },
     },
     highlighedContent() {
-      if(!this.query) {
+      if(!this.$store.getters.query) {
         return this.content.join('<br>')
       }
 
       let HighlightedContent = [];
       try {
-        HighlightedContent = this.getHighlightedContent(this.content, this.query);
+        HighlightedContent = this.getHighlightedContent(this.content, this.$store.getters.query);
       }
       catch(error) {
+        console.log(error);
         HighlightedContent = this.content;
       }
 
       return HighlightedContent.join('<br>');
     },
   },
+  mounted() {
+    this.$el.style.setProperty('--color', this.$store.getters.highlightColor)
+  },
 }
 </script>
 
 <style>
+:root {
+  --color: #ffffff;
+}
 
 body {
   background: #F0F0F0;
 }
 .highlightText {
-    background: #a0E5F0;
+    background: var(--color);
 }
 </style>

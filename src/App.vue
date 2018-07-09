@@ -8,6 +8,10 @@
             <file-upload/>
           </v-flex>
           <v-flex md2 ma-2>
+            <regex-highlighter
+              fieldLabel="Some_string"
+              :updateQuery="updateQuery"
+              highlightColor="#a0e5f0"/>
           </v-flex>
           <v-flex md6 ma-6>
             <text-output/>
@@ -23,17 +27,22 @@ import { mapActions } from "vuex"
 
 import TextOutput from "./components/TextOutput.vue"
 import FileUpload from "./components/FileUpload.vue"
+import RegexHighlighter from "./components/RegexHighlighter.vue"
 
 export default {
   name: "app",
   components: {
     TextOutput,
     FileUpload,
+    RegexHighlighter,
   },
   data() {
     return {};
   },
   methods: {
+    ...mapActions({
+      updateQuery: "updateQuery",
+    })
   },
   async mounted() {},
 };
